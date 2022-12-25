@@ -78,10 +78,10 @@ flutter:
   fonts:
     - family: fontRegular
       fonts:
-        - asset: assets/font/fontRegular.ttf
+        - asset: assets/fonts/fontRegular.ttf
     - family: fontBold
       fonts:
-        - asset: assets/font/fontBold.ttf
+        - asset: assets/fonts/fontBold.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
