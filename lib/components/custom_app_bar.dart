@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final String title;
+
   // final bool isAction;
   final Function() onTap;
 
@@ -22,7 +23,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       actions: [
         IconButton(
           onPressed: onTap,
-          icon: Icon(
+          icon: const Icon(
             Icons.add,
           ),
         ),
