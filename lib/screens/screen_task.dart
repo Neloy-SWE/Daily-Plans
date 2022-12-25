@@ -8,9 +8,28 @@ class TaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        tooltip: AllText.addTask,
+        child: const Icon(
+          Icons.add,
+        ),
+      ),
       appBar: CustomAppBar(
         title: AllText.appTitle,
-        onTap: (){},
+        onTap: () {},
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+          Center(
+            child: Chip(
+              label: Text(
+                "Hello",
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
