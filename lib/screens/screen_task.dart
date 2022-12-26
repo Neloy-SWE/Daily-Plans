@@ -3,47 +3,68 @@ import 'package:daily_plans/components/custom_task_list.dart';
 import 'package:daily_plans/utilities/strings.dart';
 import 'package:flutter/material.dart';
 
+import '../blocs/bloc_exports.dart';
 import '../model/model_task.dart';
 
 class TaskScreen extends StatelessWidget {
-  const TaskScreen({Key? key}) : super(key: key);
+  TaskScreen({Key? key}) : super(key: key);
+  TextEditingController titleController = TextEditingController();
 
-  static List<TaskModel> taskList = [
-    TaskModel(title: "Hello 1"),
-    TaskModel(title: "Hello 2"),
-    TaskModel(title: "Hello 3"),
-  ];
+  void _addTask(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: Column(
+            children: [
+              TextField(
+                controller: titleController,
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: AllText.addTask,
-        child: const Icon(
-          Icons.add,
-        ),
-      ),
-      appBar: CustomAppBar(
-        title: AllText.appTitle,
-        onTap: () {},
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // task count result
-          const Center(
-            child: Chip(
-              label: Text(
-                "Hello",
-              ),
+    return BlocBuilder<TasksBloc, TasksState>(
+      builder: (context, state) {
+        List<TaskModel> taskList = state.allTasks;
+        return Scaffold(
+          floatingActionButton: FloatingActionButton(
+            onPressed:()=> _addTask(context),
+            tooltip: AllText.addTask,
+            child: const Icon(
+              Icons.add,
             ),
           ),
+          appBar: CustomAppBar(
+            title: AllText.appTitle,
+            onTap: () {},
+          ),
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // task count result
+              const Center(
+                child: Chip(
+                  label: Text(
+                    "Hello",
+                  ),
+                ),
+              ),
 
-          // task list
-          TaskList(taskList: taskList),
-        ],
-      ),
+              // task list
+              TaskList(taskList: taskList),
+            ],
+          ),
+        );
+      },
     );
   }
 }
