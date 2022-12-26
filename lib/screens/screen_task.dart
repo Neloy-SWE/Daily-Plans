@@ -1,4 +1,5 @@
 import 'package:daily_plans/components/custom_app_bar.dart';
+import 'package:daily_plans/components/custom_task_list.dart';
 import 'package:daily_plans/utilities/strings.dart';
 import 'package:flutter/material.dart';
 
@@ -40,19 +41,7 @@ class TaskScreen extends StatelessWidget {
           ),
 
           // task list
-          ListView.builder(
-            shrinkWrap: true,
-              itemCount: taskList.length,
-              itemBuilder: (context, index) {
-                var task = taskList[index];
-                return ListTile(
-                  title: Text(task.title),
-                  trailing: Checkbox(
-                    value: task.isDone,
-                    onChanged: (value) {},
-                  ),
-                );
-              }),
+          TaskList(taskList: taskList),
         ],
       ),
     );
