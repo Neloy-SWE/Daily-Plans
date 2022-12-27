@@ -2,15 +2,18 @@ import 'package:daily_plans/components/custom_app_bar.dart';
 import 'package:daily_plans/components/custom_task_list.dart';
 import 'package:daily_plans/utilities/strings.dart';
 import 'package:flutter/material.dart';
-
 import '../blocs/bloc_exports.dart';
 import '../components/custom_bottom_sheet_body.dart';
 import '../model/model_task.dart';
 
-class TaskScreen extends StatelessWidget {
-  TaskScreen({Key? key}) : super(key: key);
-  TextEditingController titleController = TextEditingController();
+class TaskScreen extends StatefulWidget {
+  const TaskScreen({Key? key}) : super(key: key);
 
+  @override
+  State<TaskScreen> createState() => _TaskScreenState();
+}
+
+class _TaskScreenState extends State<TaskScreen> {
   void _addTask(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -19,9 +22,7 @@ class TaskScreen extends StatelessWidget {
           padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-          child: BottomSheetBody(
-            titleController: titleController,
-          ),
+          child: const BottomSheetBody(),
         ),
       ),
     );
@@ -42,7 +43,7 @@ class TaskScreen extends StatelessWidget {
           ),
           appBar: CustomAppBar(
             title: AllText.appTitle,
-            onTap: () {},
+            onTap: () => _addTask(context),
           ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

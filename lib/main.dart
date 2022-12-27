@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: AllText.appTitle,
         home: TaskScreen(),

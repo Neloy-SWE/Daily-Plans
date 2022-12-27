@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'constants.dart';
 
+
 class TaskModel extends Equatable {
   final String title;
   bool? isDone;

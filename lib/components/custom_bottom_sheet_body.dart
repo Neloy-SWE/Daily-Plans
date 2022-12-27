@@ -5,11 +5,11 @@ import '../utilities/app_size.dart';
 import '../utilities/strings.dart';
 
 class BottomSheetBody extends StatelessWidget {
-  final TextEditingController titleController;
-  const BottomSheetBody({Key? key, required this.titleController}) : super(key: key);
+  const BottomSheetBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController titleController = TextEditingController();
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -32,7 +32,6 @@ class BottomSheetBody extends StatelessWidget {
             ),
           ),
 
-
           // cancel, add button
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -48,8 +47,14 @@ class BottomSheetBody extends StatelessWidget {
               // add button
               ElevatedButton(
                 onPressed: () {
-                  var task = TaskModel(title: titleController.text,);
-                  context.read<TasksBloc>().add(AddTask(task: task,),);
+                  var task = TaskModel(
+                    title: titleController.text,
+                  );
+                  context.read<TasksBloc>().add(
+                        AddTask(
+                          task: task,
+                        ),
+                      );
                   Navigator.of(context).pop();
                 },
                 child: const Text(
