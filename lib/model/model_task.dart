@@ -36,7 +36,7 @@ class TaskModel extends Equatable {
     };
   }
 
-  factory TaskModel.hello(Map<String, dynamic> map) {
+  factory TaskModel.fromMap(Map<String, dynamic> map) {
     return TaskModel(
       title: map[ModelConstants.title] ?? "",
       isDone: map[ModelConstants.isDone] ?? "",
