@@ -1,9 +1,6 @@
-import 'dart:async';
-
-import 'package:bloc/bloc.dart';
 import 'package:daily_plans/model/model_task.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import '../bloc_exports.dart';
 
 part 'tasks_event.dart';
 
@@ -25,7 +22,17 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     );
   }
 
-  void _onDeleteTask(DeleteTask event, Emitter<TasksState> emit) {}
+  void _onDeleteTask(DeleteTask event, Emitter<TasksState> emit) {
+    final state = this.state;
+    emit(
+      TasksState(
+        allTasks: List.from(state.allTasks)
+          ..remove(
+            event.task,
+          ),
+      ),
+    );
+  }
 
   void _onUpdateTask(UpdateTask event, Emitter<TasksState> emit) {
     final state = this.state;
@@ -33,10 +40,12 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     final int index = state.allTasks.indexOf(task);
     List<TaskModel> allTasks = List.from(state.allTasks)..remove(task);
     task.isDone == false
-        ? allTasks.insert(index,
+        ? allTasks.insert(
+            index,
             task.tm(isDone: true),
           )
-        : allTasks.insert(index,
+        : allTasks.insert(
+            index,
             task.tm(isDone: false),
           );
     emit(

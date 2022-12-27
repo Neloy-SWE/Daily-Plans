@@ -1,4 +1,3 @@
-import 'package:daily_plans/model/model_task.dart';
 import 'package:daily_plans/screens/screen_task.dart';
 import 'package:daily_plans/utilities/strings.dart';
 import 'package:flutter/material.dart';
@@ -29,14 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => TasksBloc()
-        ..add(
-          AddTask(
-            task: TaskModel(
-              title: "Task 1",
-            ),
-          ),
-        ),
+      create: (context) => TasksBloc(),
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: AllText.appTitle,
