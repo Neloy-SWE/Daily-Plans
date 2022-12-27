@@ -3,4 +3,5 @@ class ModelConstants {
   static const String isDone = "isDone";
   static const String isDeleted = "isDeleted";
   static const String allTasks = "allTasks";
+  static const String id = "id";
 }
