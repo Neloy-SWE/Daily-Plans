@@ -1,5 +1,5 @@
-import 'package:daily_plans/utilities/strings.dart';
 import 'package:equatable/equatable.dart';
+import 'constants.dart';
 
 class TaskModel extends Equatable {
   final String title;
@@ -29,17 +29,17 @@ class TaskModel extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
-      AllText.title: title,
-      AllText.isDone: isDone,
-      AllText.isDeleted: isDeleted,
+      ModelConstants.title: title,
+      ModelConstants.isDone: isDone,
+      ModelConstants.isDeleted: isDeleted,
     };
   }
 
   factory TaskModel.hello(Map<String, dynamic> map) {
     return TaskModel(
-      title: map[AllText.title] ?? "",
-      isDone: map[AllText.isDone] ?? "",
-      isDeleted: map[AllText.isDeleted] ?? "",
+      title: map[ModelConstants.title] ?? "",
+      isDone: map[ModelConstants.isDone] ?? "",
+      isDeleted: map[ModelConstants.isDeleted] ?? "",
     );
   }
 
