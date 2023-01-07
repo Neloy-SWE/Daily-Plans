@@ -4,6 +4,7 @@ import 'package:daily_plans/utilities/strings.dart';
 import 'package:flutter/material.dart';
 import '../blocs/bloc_exports.dart';
 import '../components/custom_bottom_sheet_body.dart';
+import '../components/custom_drawer.dart';
 import '../model/model_task.dart';
 
 class TaskScreen extends StatefulWidget {
@@ -45,14 +46,15 @@ class _TaskScreenState extends State<TaskScreen> {
             title: AllText.appTitle,
             onTap: () => _addTask(context),
           ),
+          drawer: MyDrawer(),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // task count result
-              const Center(
+              Center(
                 child: Chip(
                   label: Text(
-                    "Hello",
+                    "${AllText.totalTaskColon} ${state.allTasks.length}",
                   ),
                 ),
               ),
