@@ -1,4 +1,5 @@
 import 'package:daily_plans/blocs/bloc_exports.dart';
+import 'package:daily_plans/services/guild_gen.dart';
 import 'package:flutter/material.dart';
 import '../model/model_task.dart';
 import '../utilities/app_size.dart';
@@ -49,6 +50,7 @@ class BottomSheetBody extends StatelessWidget {
                 onPressed: () {
                   var task = TaskModel(
                     title: titleController.text,
+                    id: GUIDGen.generate(),
                   );
                   context.read<TasksBloc>().add(
                         AddTask(
