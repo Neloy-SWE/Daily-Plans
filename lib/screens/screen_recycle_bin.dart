@@ -8,6 +8,8 @@ import '../utilities/strings.dart';
 class RecycleBin extends StatelessWidget {
   const RecycleBin({Key? key}) : super(key: key);
 
+  static const id = "recycleBinScreen";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
