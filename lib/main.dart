@@ -1,4 +1,5 @@
 import 'package:daily_plans/screens/screen_task.dart';
+import 'package:daily_plans/services/app_route.dart';
 import 'package:daily_plans/utilities/strings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -12,20 +13,25 @@ void main() async {
         ? HydratedStorage.webStorageDirectory
         : await getTemporaryDirectory(),
   );
-  runApp(const MyApp());
+  runApp(MyApp(
+    appRoute: AppRoute(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final AppRoute appRoute;
+
+  const MyApp({Key? key, required this.appRoute}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => TasksBloc(),
-      child: const MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: AllText.appTitle,
-        home: TaskScreen(),
+        home: const TaskScreen(),
+        onGenerateRoute: appRoute.onGenerateRoute,
       ),
     );
   }
