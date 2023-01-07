@@ -8,4 +8,5 @@ class AllText {
   static const String totalTaskColon = "Total Task: ";
   static const String myTasks = "My Tasks";
   static const String bin = "Bin";
+  static const String recycleBin = "Recycle Bin";
 }
