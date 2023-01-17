@@ -3,6 +3,8 @@ import 'package:daily_plans/screens/screen_task.dart';
 import 'package:daily_plans/utilities/strings.dart';
 import 'package:flutter/material.dart';
 
+import '../blocs/bloc_exports.dart';
+
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
 
@@ -25,26 +27,38 @@ class MyDrawer extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline5,
               ),
             ),
-            GestureDetector(
-              onTap: ()=> Navigator.of(context).pushNamed(
-                TaskScreen.id,
-              ),
-              child: const ListTile(
-                leading: Icon(Icons.folder_special),
-                title: Text(AllText.myTasks),
-                trailing: Text("0"),
-              ),
+            BlocBuilder<TasksBloc, TasksState>(
+              builder: (context, state) {
+                return GestureDetector(
+                  onTap: () => Navigator.of(context).pushNamed(
+                    TaskScreen.id,
+                  ),
+                  child: ListTile(
+                    leading: const Icon(Icons.folder_special),
+                    title: const Text(AllText.myTasks),
+                    trailing: Text(
+                      state.allTasks.length.toString(),
+                    ),
+                  ),
+                );
+              },
             ),
             const Divider(),
-            GestureDetector(
-              onTap: ()=> Navigator.of(context).pushNamed(
-                RecycleBin.id,
-              ),
-              child: const ListTile(
-                leading: Icon(Icons.delete),
-                title: Text(AllText.bin),
-                trailing: Text("0"),
-              ),
+            BlocBuilder<TasksBloc, TasksState>(
+              builder: (context, state) {
+                return GestureDetector(
+                  onTap: () => Navigator.of(context).pushNamed(
+                    RecycleBin.id,
+                  ),
+                  child: ListTile(
+                    leading: const Icon(Icons.delete),
+                    title: const Text(AllText.bin),
+                    trailing: Text(
+                      state.removedTasks.length.toString(),
+                    ),
+                  ),
+                );
+              },
             ),
           ],
         ),
