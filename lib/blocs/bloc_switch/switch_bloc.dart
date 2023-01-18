@@ -1,11 +1,13 @@
 import 'package:daily_plans/blocs/bloc_exports.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../model/constants.dart';
+
 part 'switch_event.dart';
 
 part 'switch_state.dart';
 
-class SwitchBloc extends Bloc<SwitchEvent, SwitchState> {
+class SwitchBloc extends HydratedBloc<SwitchEvent, SwitchState> {
   SwitchBloc() : super(const SwitchInitial(switchValue: false)) {
     on<SwitchOnEvent>(
       (event, emit) {
@@ -26,5 +28,15 @@ class SwitchBloc extends Bloc<SwitchEvent, SwitchState> {
         );
       },
     );
+  }
+
+  @override
+  SwitchState? fromJson(Map<String, dynamic> json) {
+    return SwitchState.fromMap(json);
+  }
+
+  @override
+  Map<String, dynamic>? toJson(SwitchState state) {
+    return state.toMap();
   }
 }

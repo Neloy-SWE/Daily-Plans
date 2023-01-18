@@ -5,16 +5,8 @@ import 'package:flutter/material.dart';
 
 import '../blocs/bloc_exports.dart';
 
-class MyDrawer extends StatefulWidget {
+class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
-
-  @override
-  State<MyDrawer> createState() => _MyDrawerState();
-}
-
-class _MyDrawerState extends State<MyDrawer> {
-
-  bool switchValue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -68,12 +60,20 @@ class _MyDrawerState extends State<MyDrawer> {
                 );
               },
             ),
-            Switch(
-              value: switchValue,
-              onChanged: (newValue) {
-                setState(() {
-                  switchValue = newValue;
-                });
+            BlocBuilder<SwitchBloc, SwitchState>(
+              builder: (context, state) {
+                return Switch(
+                  value: state.switchValue,
+                  onChanged: (newValue) {
+                    newValue
+                        ? context.read<SwitchBloc>().add(
+                              SwitchOnEvent(),
+                            )
+                        : context.read<SwitchBloc>().add(
+                              SwitchOffEvent(),
+                            );
+                  },
+                );
               },
             ),
           ],

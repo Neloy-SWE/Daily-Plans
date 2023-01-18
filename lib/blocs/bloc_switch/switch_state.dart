@@ -7,6 +7,18 @@ class SwitchState extends Equatable {
 
   @override
   List<Object> get props => [switchValue];
+
+  Map<String, dynamic> toMap() {
+    return {
+      ModelConstants.switchValue: switchValue,
+    };
+  }
+
+  factory SwitchState.fromMap(Map<String, dynamic> map) {
+    return SwitchState(
+      switchValue: map[ModelConstants.switchValue] ?? false,
+    );
+  }
 }
 
 class SwitchInitial extends SwitchState {

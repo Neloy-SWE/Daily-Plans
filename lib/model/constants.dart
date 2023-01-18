@@ -5,4 +5,5 @@ class ModelConstants {
   static const String allTasks = "allTasks";
   static const String removedTasks = "removedTasks";
   static const String id = "id";
+  static const String switchValue = "switchValue";
 }

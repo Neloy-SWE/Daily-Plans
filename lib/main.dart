@@ -1,5 +1,6 @@
 import 'package:daily_plans/screens/screen_task.dart';
 import 'package:daily_plans/services/app_route.dart';
+import 'package:daily_plans/services/app_theme.dart';
 import 'package:daily_plans/utilities/strings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -25,14 +26,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TasksBloc(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: AllText.appTitle,
-        home: const TaskScreen(),
-        onGenerateRoute: appRoute.onGenerateRoute,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => TasksBloc(),
+        ),
+        BlocProvider(
+          create: (context) => SwitchBloc(),
+        ),
+      ],
+      child: BlocBuilder<SwitchBloc, SwitchState>(
+        builder: (context, state) {
+          return MaterialApp(
+            theme: state.switchValue
+                ? AppThemes.appThemeData[AppTheme.darkTheme]
+                : AppThemes.appThemeData[AppTheme.lightTheme],
+            debugShowCheckedModeBanner: false,
+            title: AllText.appTitle,
+            home: const TaskScreen(),
+            onGenerateRoute: appRoute.onGenerateRoute,
+          );
+        },
       ),
     );
   }
 }
+
+// create: (context) => TasksBloc(),
