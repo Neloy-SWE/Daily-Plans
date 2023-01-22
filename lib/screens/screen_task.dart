@@ -6,11 +6,12 @@ import '../blocs/bloc_exports.dart';
 import '../components/custom_bottom_sheet_body.dart';
 import '../components/custom_drawer.dart';
 import '../model/model_task.dart';
+import '../utilities/screen_path.dart';
 
 class TaskScreen extends StatefulWidget {
   const TaskScreen({Key? key}) : super(key: key);
 
-  static const id = "taskScreen";
+  static const String id = ScreenPath.taskScreen;
 
   @override
   State<TaskScreen> createState() => _TaskScreenState();
@@ -48,7 +49,7 @@ class _TaskScreenState extends State<TaskScreen> {
             title: AllText.appTitle,
             onTap: () => _addTask(context),
           ),
-          drawer: MyDrawer(),
+          drawer: const MyDrawer(),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [

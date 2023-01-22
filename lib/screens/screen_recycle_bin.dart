@@ -1,3 +1,4 @@
+import 'package:daily_plans/utilities/screen_path.dart';
 import 'package:flutter/material.dart';
 
 import '../blocs/bloc_exports.dart';
@@ -9,7 +10,7 @@ import '../utilities/strings.dart';
 class RecycleBin extends StatelessWidget {
   const RecycleBin({Key? key}) : super(key: key);
 
-  static const id = "recycleBinScreen";
+  static const String id = ScreenPath.recycleBinScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class RecycleBin extends StatelessWidget {
             title: AllText.recycleBin,
             onTap: () => {},
           ),
-          drawer: MyDrawer(),
+          drawer: const MyDrawer(),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
