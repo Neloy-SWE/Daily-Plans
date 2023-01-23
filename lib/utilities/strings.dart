@@ -9,4 +9,8 @@ class AllText {
   static const String myTasks = "My Tasks";
   static const String bin = "Bin";
   static const String recycleBin = "Recycle Bin";
+  static const String tabsScreen = "Tabs Screen";
+  static const String pendingTasks = "Pending Tasks";
+  static const String completedTasks = "Completed Tasks";
+  static const String favoriteTasks = "Favorite Tasks";
 }

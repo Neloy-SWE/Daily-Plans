@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final String title;
+  final bool isAction;
 
   // final bool isAction;
   final Function() onTap;
@@ -9,6 +10,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   const CustomAppBar({
     Key? key,
     required this.title,
+    required this.isAction,
     // required this.isAction,
     required this.onTap,
   }) : super(key: key);
@@ -20,14 +22,16 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(title),
-      actions: [
-        IconButton(
-          onPressed: onTap,
-          icon: const Icon(
-            Icons.add,
-          ),
-        ),
-      ],
+      actions: isAction
+          ? [
+              IconButton(
+                onPressed: onTap,
+                icon: const Icon(
+                  Icons.add,
+                ),
+              ),
+            ]
+          : [],
     );
   }
 }

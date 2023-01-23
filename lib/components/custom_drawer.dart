@@ -1,9 +1,10 @@
 import 'package:daily_plans/screens/screen_recycle_bin.dart';
-import 'package:daily_plans/screens/screen_task.dart';
+import 'package:daily_plans/screens/screen_pending_task.dart';
 import 'package:daily_plans/utilities/strings.dart';
 import 'package:flutter/material.dart';
 
 import '../blocs/bloc_exports.dart';
+import 'bottom_navigation_bar.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class MyDrawer extends StatelessWidget {
               builder: (context, state) {
                 return GestureDetector(
                   onTap: () => Navigator.of(context).pushReplacementNamed(
-                    TaskScreen.id,
+                    BottomNavBar.id,
                   ),
                   child: ListTile(
                     leading: const Icon(Icons.folder_special),

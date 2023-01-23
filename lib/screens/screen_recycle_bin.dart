@@ -19,6 +19,7 @@ class RecycleBin extends StatelessWidget {
         return Scaffold(
           appBar: CustomAppBar(
             title: AllText.recycleBin,
+            isAction: false,
             onTap: () => {},
           ),
           drawer: const MyDrawer(),

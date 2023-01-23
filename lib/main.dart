@@ -1,4 +1,3 @@
-import 'package:daily_plans/screens/screen_task.dart';
 import 'package:daily_plans/services/app_route.dart';
 import 'package:daily_plans/services/app_theme.dart';
 import 'package:daily_plans/utilities/strings.dart';
@@ -6,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'blocs/bloc_exports.dart';
+import 'components/bottom_navigation_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
                 : AppThemes.appThemeData[AppTheme.lightTheme],
             debugShowCheckedModeBanner: false,
             title: AllText.appTitle,
-            home: const TaskScreen(),
+            home: const BottomNavBar(),
             onGenerateRoute: appRoute.onGenerateRoute,
           );
         },
