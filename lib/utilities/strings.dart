@@ -11,6 +11,9 @@ class AllText {
   static const String recycleBin = "Recycle Bin";
   static const String tabsScreen = "Tabs Screen";
   static const String pendingTasks = "Pending Tasks";
+  static const String pendingTasksColon = "Pending Tasks: ";
   static const String completedTasks = "Completed Tasks";
+  static const String completedTasksColon = "Completed Tasks: ";
   static const String favoriteTasks = "Favorite Tasks";
+  static const String favoriteTasksColon = "Favorite Tasks: ";
 }

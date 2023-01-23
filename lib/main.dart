@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
                 : AppThemes.appThemeData[AppTheme.lightTheme],
             debugShowCheckedModeBanner: false,
             title: AllText.appTitle,
-            home: const BottomNavBar(),
+            home: BottomNavBar(),
             onGenerateRoute: appRoute.onGenerateRoute,
           );
         },

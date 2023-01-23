@@ -14,7 +14,7 @@ class CompletedTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TasksBloc, TasksState>(
       builder: (context, state) {
-        List<TaskModel> taskList = state.allTasks;
+        List<TaskModel> taskList = state.completedTasks;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -22,7 +22,7 @@ class CompletedTaskScreen extends StatelessWidget {
             Center(
               child: Chip(
                 label: Text(
-                  "${AllText.totalTaskColon} ${state.allTasks.length}",
+                  "${AllText.totalTaskColon} ${taskList.length}",
                 ),
               ),
             ),

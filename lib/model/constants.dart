@@ -6,4 +6,8 @@ class ModelConstants {
   static const String removedTasks = "removedTasks";
   static const String id = "id";
   static const String switchValue = "switchValue";
+  static const String pageName = "pageName";
+  static const String pendingTasks = "pendingTasks";
+  static const String completedTasks = "completedTasks";
+  static const String favoriteTasks = "favoriteTasks";
 }

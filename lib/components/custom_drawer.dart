@@ -38,7 +38,7 @@ class MyDrawer extends StatelessWidget {
                     leading: const Icon(Icons.folder_special),
                     title: const Text(AllText.myTasks),
                     trailing: Text(
-                      state.allTasks.length.toString(),
+                      "${state.pendingTasks.length} | ${state.completedTasks.length}",
                     ),
                   ),
                 );
