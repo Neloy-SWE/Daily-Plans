@@ -1,5 +1,4 @@
 import 'package:daily_plans/screens/screen_recycle_bin.dart';
-import 'package:daily_plans/screens/screen_pending_task.dart';
 import 'package:daily_plans/utilities/strings.dart';
 import 'package:flutter/material.dart';
 

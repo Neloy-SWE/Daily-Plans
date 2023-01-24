@@ -38,6 +38,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   void _addTask(BuildContext context) {
     showModalBottomSheet(
+      isScrollControlled: true,
       context: context,
       builder: (context) => SingleChildScrollView(
         child: Container(

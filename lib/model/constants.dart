@@ -10,4 +10,5 @@ class ModelConstants {
   static const String pendingTasks = "pendingTasks";
   static const String completedTasks = "completedTasks";
   static const String favoriteTasks = "favoriteTasks";
+  static const String description = "description";
 }

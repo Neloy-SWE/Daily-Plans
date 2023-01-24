@@ -16,4 +16,5 @@ class AllText {
   static const String completedTasksColon = "Completed Tasks: ";
   static const String favoriteTasks = "Favorite Tasks";
   static const String favoriteTasksColon = "Favorite Tasks: ";
+  static const String description = "Description";
 }

@@ -11,6 +11,7 @@ class BottomSheetBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController titleController = TextEditingController();
+    TextEditingController descriptionController = TextEditingController();
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -32,6 +33,22 @@ class BottomSheetBody extends StatelessWidget {
               border: OutlineInputBorder(),
             ),
           ),
+          AppSize.gapH10,
+
+          // text field for task description
+          TextField(
+            autofocus: true,
+            controller: descriptionController,
+            minLines: 3,
+            maxLines: 5,
+            decoration: const InputDecoration(
+              label: Text(
+                AllText.description,
+              ),
+              border: OutlineInputBorder(),
+            ),
+          ),
+          AppSize.gapH10,
 
           // cancel, add button
           Row(
@@ -50,6 +67,7 @@ class BottomSheetBody extends StatelessWidget {
                 onPressed: () {
                   var task = TaskModel(
                     title: titleController.text,
+                    description: descriptionController.text,
                     id: GUIDGen.generate(),
                   );
                   context.read<TasksBloc>().add(
