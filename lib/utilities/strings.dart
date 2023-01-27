@@ -17,4 +17,8 @@ class AllText {
   static const String favoriteTasks = "Favorite Tasks";
   static const String favoriteTasksColon = "Favorite Tasks: ";
   static const String description = "Description";
+  static const String taskName = "Task Name";
+  static const String edit = "Edit";
+  static const String addToBookMark = "Add to bookmark";
+  static const String delete = "Delete";
 }

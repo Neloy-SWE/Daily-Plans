@@ -26,7 +26,7 @@ class TaskList extends StatelessWidget {
                       TextSpan(
                         children: [
                           const TextSpan(
-                            text: "Hello\n",
+                            text: "${AllText.taskName}\n",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),

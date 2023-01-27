@@ -1,6 +1,10 @@
 import 'package:daily_plans/blocs/bloc_exports.dart';
 import 'package:daily_plans/model/model_task.dart';
+import 'package:daily_plans/utilities/app_size.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import 'custom_pop_up_menu.dart';
 
 class TaskTile extends StatelessWidget {
   final TaskModel task;
@@ -19,27 +23,81 @@ class TaskTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        task.title,
-        overflow: TextOverflow.ellipsis,
-        style: TextStyle(
-          decoration: task.isDone! ? TextDecoration.lineThrough : null,
-        ),
-      ),
-      trailing: Checkbox(
-        value: task.isDone,
-        onChanged: task.isDeleted == false
-            ? (value) {
-                context.read<TasksBloc>().add(
-                      UpdateTask(
-                        task: task,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: Row(
+            children: [
+              AppSize.gapW10,
+              const Icon(Icons.star_outline),
+              AppSize.gapW10,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      task.title,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 18,
+                        decoration:
+                            task.isDone! ? TextDecoration.lineThrough : null,
                       ),
-                    );
-              }
-            : null,
-      ),
-      onLongPress: () => _removeOrDeleteTask(context, task),
+                    ),
+                    Text(
+                      DateFormat().add_yMMMd().add_Hms().format(
+                            DateTime.now(),
+                          ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        Row(
+          children: [
+            Checkbox(
+              value: task.isDone,
+              onChanged: task.isDeleted == false
+                  ? (value) {
+                      context.read<TasksBloc>().add(
+                            UpdateTask(
+                              task: task,
+                            ),
+                          );
+                    }
+                  : null,
+            ),
+            MyPopUpMenu(
+              cancelOrDeleteCallback: () => _removeOrDeleteTask(context, task),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
+// ListTile(
+// title: Text(
+// task.title,
+// overflow: TextOverflow.ellipsis,
+// style: TextStyle(
+// decoration: task.isDone! ? TextDecoration.lineThrough : null,
+// ),
+// ),
+// trailing: Checkbox(
+// value: task.isDone,
+// onChanged: task.isDeleted == false
+// ? (value) {
+// context.read<TasksBloc>().add(
+// UpdateTask(
+// task: task,
+// ),
+// );
+// }
+// : null,
+// ),
+// onLongPress: () => _removeOrDeleteTask(context, task),
+// );
