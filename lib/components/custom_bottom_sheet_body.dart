@@ -68,7 +68,7 @@ class BottomSheetBody extends StatelessWidget {
                   var task = TaskModel(
                     title: titleController.text,
                     description: descriptionController.text,
-                    id: GUIDGen.generate(),
+                    id: GUIDGen.generate(), date: DateTime.now().toString(),
                   );
                   context.read<TasksBloc>().add(
                         AddTask(

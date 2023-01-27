@@ -47,7 +47,7 @@ class TaskTile extends StatelessWidget {
                     ),
                     Text(
                       DateFormat().add_yMMMd().add_Hms().format(
-                            DateTime.now(),
+                            DateTime.parse(task.date),
                           ),
                     ),
                   ],
@@ -72,6 +72,7 @@ class TaskTile extends StatelessWidget {
             ),
             MyPopUpMenu(
               cancelOrDeleteCallback: () => _removeOrDeleteTask(context, task),
+              task: task,
             ),
           ],
         ),
@@ -79,25 +80,3 @@ class TaskTile extends StatelessWidget {
     );
   }
 }
-// ListTile(
-// title: Text(
-// task.title,
-// overflow: TextOverflow.ellipsis,
-// style: TextStyle(
-// decoration: task.isDone! ? TextDecoration.lineThrough : null,
-// ),
-// ),
-// trailing: Checkbox(
-// value: task.isDone,
-// onChanged: task.isDeleted == false
-// ? (value) {
-// context.read<TasksBloc>().add(
-// UpdateTask(
-// task: task,
-// ),
-// );
-// }
-// : null,
-// ),
-// onLongPress: () => _removeOrDeleteTask(context, task),
-// );
