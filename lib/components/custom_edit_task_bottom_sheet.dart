@@ -1,23 +1,28 @@
 import 'package:daily_plans/blocs/bloc_exports.dart';
-import 'package:daily_plans/services/guild_gen.dart';
 import 'package:flutter/material.dart';
 import '../model/model_task.dart';
 import '../utilities/app_size.dart';
 import '../utilities/strings.dart';
 
-class BottomSheetBody extends StatelessWidget {
-  const BottomSheetBody({Key? key}) : super(key: key);
+class EdtTaskBottomSheet extends StatelessWidget {
+  final TaskModel oldTask;
+
+  const EdtTaskBottomSheet({Key? key, required this.oldTask}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController titleController = TextEditingController();
-    TextEditingController descriptionController = TextEditingController();
+    TextEditingController titleController = TextEditingController(
+      text: oldTask.title,
+    );
+    TextEditingController descriptionController = TextEditingController(
+      text: oldTask.description,
+    );
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
         children: [
           const Text(
-            AllText.addTask,
+            AllText.editTask,
             style: TextStyle(fontSize: 24),
           ),
           AppSize.gapH10,
@@ -65,20 +70,23 @@ class BottomSheetBody extends StatelessWidget {
               // add button
               ElevatedButton(
                 onPressed: () {
-                  var task = TaskModel(
+                  var editTask = TaskModel(
                     title: titleController.text,
                     description: descriptionController.text,
-                    id: GUIDGen.generate(), date: DateTime.now().toString(),
+                    id: oldTask.id,
+                    isFavorite: oldTask.isFavorite,
+                    isDone: false,
+                    date: DateTime.now().toString(),
                   );
                   context.read<TasksBloc>().add(
-                        AddTask(
+                        EditTask(
                           task: task,
                         ),
                       );
                   Navigator.of(context).pop();
                 },
                 child: const Text(
-                  AllText.add,
+                  AllText.save,
                 ),
               ),
             ],

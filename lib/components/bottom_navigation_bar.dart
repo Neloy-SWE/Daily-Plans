@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import '../utilities/screen_path.dart';
 import '../utilities/strings.dart';
 import 'custom_app_bar.dart';
-import 'custom_bottom_sheet_body.dart';
+import 'custom_add_task_bottom_sheet.dart';
 
 class BottomNavBar extends StatefulWidget {
   BottomNavBar({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-          child: const BottomSheetBody(),
+          child: const AddTaskBottomSheet(),
         ),
       ),
     );
