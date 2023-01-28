@@ -80,7 +80,8 @@ class EdtTaskBottomSheet extends StatelessWidget {
                   );
                   context.read<TasksBloc>().add(
                         EditTask(
-                          task: task,
+                          newTask: editTask,
+                          oldTask: oldTask,
                         ),
                       );
                   Navigator.of(context).pop();
