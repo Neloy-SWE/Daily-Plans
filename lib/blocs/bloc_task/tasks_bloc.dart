@@ -94,7 +94,7 @@ class TasksBloc extends HydratedBloc<TasksEvent, TasksState> {
               isFavorite: true,
             ),
           );
-        favoriteTasks.insert(
+        favoriteTasks = List.from(favoriteTasks)..insert(
           0,
           event.task.tm(
             isFavorite: true,
