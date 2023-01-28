@@ -20,6 +20,7 @@ class AllText {
   static const String taskName = "Task Name";
   static const String edit = "Edit";
   static const String addToBookMark = "Add to bookmark";
+  static const String removeFromBookMark = "Remove from bookmark";
   static const String delete = "Delete";
   static const String permanentlyDelete = "Permanently delete";
   static const String restore = "Restore";
