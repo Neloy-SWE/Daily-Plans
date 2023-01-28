@@ -38,3 +38,18 @@ A simple project about manage your daily tasks.
 <img src="screenshots/Light/7.bin.jpg" width="200" />
 <img src="screenshots/Light/8.binpopup.jpg" width="200" />
 <img src="screenshots/Light/9.deleteallpopup.jpg" width="200" />
+
+
+## Dark theme:
+<p float="left">
+<img src="screenshots/Dark/1.1.pending.jpg" width="200" />
+<img src="screenshots/Dark/1.2.addt.jpg" width="200" />
+<img src="screenshots/Dark/1.3.pending.jpg" width="200" />
+<img src="screenshots/Dark/2.completet.jpg" width="200" />
+<img src="screenshots/Dark/3.fav.jpg" width="200" />
+<img src="screenshots/Dark/4.pendingpopup.jpg" width="200" />
+<img src="screenshots/Dark/5.editt.jpg" width="200" />
+<img src="screenshots/Dark/6.drawer.jpg" width="200" />
+<img src="screenshots/Dark/7.bin.jpg" width="200" />
+<img src="screenshots/Dark/8.binpopup.jpg" width="200" />
+<img src="screenshots/Dark/9.deleteallpopup.jpg" width="200" />
