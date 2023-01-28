@@ -65,7 +65,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           : null,
       appBar: CustomAppBar(
         title: _pageDetails[_selectedPageIndex][ModelConstants.title],
-        isAction: true,
+        isNotBin: true,
         onTap: () => _addTask(context),
       ),
       drawer: const MyDrawer(),

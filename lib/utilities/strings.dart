@@ -24,6 +24,7 @@ class AllText {
   static const String addToBookMark = "Add to bookmark";
   static const String removeFromBookMark = "Remove from bookmark";
   static const String delete = "Delete";
+  static const String deleteAllTasks = "Delete all tasks";
   static const String permanentlyDelete = "Permanently delete";
   static const String restore = "Restore";
 }

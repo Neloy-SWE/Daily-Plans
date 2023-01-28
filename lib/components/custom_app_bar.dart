@@ -1,8 +1,9 @@
+import 'package:daily_plans/utilities/strings.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final String title;
-  final bool isAction;
+  final bool isNotBin;
 
   // final bool isAction;
   final Function() onTap;
@@ -10,8 +11,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   const CustomAppBar({
     Key? key,
     required this.title,
-    required this.isAction,
-    // required this.isAction,
+    required this.isNotBin,
     required this.onTap,
   }) : super(key: key);
 
@@ -22,7 +22,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(title),
-      actions: isAction
+      actions: isNotBin
           ? [
               IconButton(
                 onPressed: onTap,
@@ -31,7 +31,21 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                 ),
               ),
             ]
-          : [],
+          : [
+              PopupMenuButton(
+                  itemBuilder: (context) => [
+                        PopupMenuItem(
+                          onTap: onTap,
+                          child: TextButton.icon(
+                            onPressed: null,
+                            icon: const Icon(Icons.delete_forever),
+                            label: const Text(
+                              AllText.deleteAllTasks,
+                            ),
+                          ),
+                        ),
+                      ]),
+            ],
     );
   }
 }
