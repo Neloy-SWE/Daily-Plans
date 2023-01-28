@@ -4,6 +4,7 @@ import 'package:daily_plans/utilities/app_size.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import 'custom_edit_task_bottom_sheet.dart';
 import 'custom_pop_up_menu.dart';
 
 class TaskTile extends StatelessWidget {
@@ -19,6 +20,23 @@ class TaskTile extends StatelessWidget {
         : context.read<TasksBloc>().add(
               RemovedTask(task: task),
             );
+  }
+
+  void _editTask(BuildContext context) {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (context) => SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: EdtTaskBottomSheet(
+            oldTask: task,
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -74,11 +92,15 @@ class TaskTile extends StatelessWidget {
             ),
             MyPopUpMenu(
               cancelOrDeleteCallback: () => _removeOrDeleteTask(context, task),
-              likeOrDislike: () => context.read<TasksBloc>().add(
+              likeOrDislikeCallback: () => context.read<TasksBloc>().add(
                     MakeFavoriteOrUnFavoriteTask(
                       task: task,
                     ),
                   ),
+              editTaskCallback: () {
+                Navigator.of(context).pop();
+                _editTask(context);
+              },
               task: task,
             ),
           ],

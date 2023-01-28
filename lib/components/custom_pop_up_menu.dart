@@ -6,12 +6,14 @@ import '../utilities/strings.dart';
 class MyPopUpMenu extends StatelessWidget {
   final TaskModel task;
   final VoidCallback cancelOrDeleteCallback;
-  final VoidCallback likeOrDislike;
+  final VoidCallback likeOrDislikeCallback;
+  final VoidCallback editTaskCallback;
 
   const MyPopUpMenu({
     Key? key,
     required this.cancelOrDeleteCallback,
-    required this.likeOrDislike,
+    required this.likeOrDislikeCallback,
+    required this.editTaskCallback,
     required this.task,
   }) : super(key: key);
 
@@ -21,8 +23,9 @@ class MyPopUpMenu extends StatelessWidget {
       itemBuilder: task.isDeleted == false
           ? (context) => [
                 PopupMenuItem(
+                  onTap: editTaskCallback,
                   child: TextButton.icon(
-                    onPressed: null,
+                    onPressed: editTaskCallback,
                     icon: const Icon(
                       Icons.edit,
                     ),
@@ -30,10 +33,9 @@ class MyPopUpMenu extends StatelessWidget {
                       AllText.edit,
                     ),
                   ),
-                  onTap: () {},
                 ),
                 PopupMenuItem(
-                  onTap: likeOrDislike,
+                  onTap: likeOrDislikeCallback,
                   child: TextButton.icon(
                     onPressed: null,
                     icon: Icon(
