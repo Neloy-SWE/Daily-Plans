@@ -211,32 +211,89 @@ class TasksBloc extends HydratedBloc<TasksEvent, TasksState> {
     final task = event.task;
     List<TaskModel> pendingTasks = state.pendingTasks;
     List<TaskModel> completedTasks = state.completedTasks;
-    task.isDone == false
-        ? {
-            pendingTasks = List.from(pendingTasks)..remove(task),
-            completedTasks = List.from(completedTasks)
-              ..insert(
-                0,
-                task.tm(
-                  isDone: true,
-                ),
-              ),
-          }
-        : {
-            completedTasks = List.from(completedTasks)..remove(task),
-            pendingTasks = List.from(pendingTasks)
-              ..insert(
-                0,
-                task.tm(
-                  isDone: false,
-                ),
-              ),
-          };
+    List<TaskModel> favoriteTasks = state.favoriteTasks;
+    if (task.isDone == false) {
+      if (task.isFavorite == false) {
+        pendingTasks = List.from(pendingTasks)..remove(task);
+        completedTasks.insert(
+          0,
+          task.tm(
+            isDone: true,
+          ),
+        );
+      } else {
+        var taskIndex = favoriteTasks.indexOf(
+          task,
+        );
+        pendingTasks = List.from(pendingTasks)..remove(task);
+        completedTasks.insert(
+          0,
+          task.tm(
+            isDone: true,
+          ),
+        );
+        favoriteTasks = List.from(favoriteTasks)
+          ..remove(task)
+          ..insert(
+            taskIndex,
+            task.tm(
+              isDone: true,
+            ),
+          );
+      }
+    } else {
+      if (task.isFavorite == false) {
+        completedTasks = List.from(
+          completedTasks,
+        )..remove(
+            task,
+          );
+        pendingTasks = List.from(
+          pendingTasks,
+        )..insert(
+            0,
+            task.tm(
+              isDone: false,
+            ),
+          );
+      } else {
+        var taskIndex = favoriteTasks.indexOf(
+          task,
+        );
+
+        completedTasks = List.from(
+          completedTasks,
+        )..remove(
+            task,
+          );
+        pendingTasks = List.from(
+          pendingTasks,
+        )..insert(
+            0,
+            task.tm(
+              isDone: false,
+            ),
+          );
+        favoriteTasks = List.from(
+          favoriteTasks,
+        )
+          ..remove(
+            task,
+          )
+          ..insert(
+            taskIndex,
+            task.tm(
+              isDone: false,
+            ),
+          );
+      }
+    }
+
     emit(
       TasksState(
         pendingTasks: pendingTasks,
         completedTasks: completedTasks,
-        favoriteTasks: state.favoriteTasks,
+        favoriteTasks: favoriteTasks,
         removedTasks: state.removedTasks,
       ),
     );
